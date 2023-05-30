@@ -1,4 +1,4 @@
-import { copyFileSync } from "fs";
+import { copyFileSync, readdirSync } from "fs";
 import { resolve } from "path";
 import { defineConfig } from "vite";
 import * as vite from "vite";
@@ -11,6 +11,9 @@ const copyToExample = (options?: PluginOptions): vite.Plugin => {
       const build = "./dist/main.js";
       const example = "./example/wasm-runner.js";
       copyFileSync(build, example);
+      // readdirSync("public").forEach((file) => {
+      //   copyFileSync(`./public/${file}`, `./example/${file}`);
+      // });
       console.log(`copied bundle to example`);
     },
   };

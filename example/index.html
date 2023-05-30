@@ -8,10 +8,36 @@
   <body>
     <div>
       <h1>wasm-runner example</h1>
+      <textarea id="code" rows="5">
+import random
+random.randint(100, 1000)
+</textarea
+      >
+      <br />
+      <button id="run">run</button>
+      <br />
+      <pre id="output">loading...</pre>
     </div>
     <script defer type="module">
-      import { main } from "/wasm-runner.js";
-      main();
+      import { CodeRunner } from "/wasm-runner.js";
+
+      const runner = new CodeRunner();
+      const worker = new Worker("worker.js", { type: "module" });
+
+      worker.postMessage("load");
+
+      worker.onmessage = (event) => {
+        if (event.data == "finish") {
+          document.getElementById("output").innerText = "";
+        } else {
+          document.getElementById("output").innerText = event.data;
+        }
+      };
+
+      document.getElementById("run").addEventListener("click", () => {
+        const code = document.getElementById("code").value;
+        worker.postMessage(code);
+      });
     </script>
   </body>
 </html>
