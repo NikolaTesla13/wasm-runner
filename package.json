@@ -19,7 +19,7 @@
     "wasm"
   ],
   "author": "Asandei Stefan-Alexandru",
-  "license": "MIT",
+  "license": "GPLv3",
   "devDependencies": {
     "@types/node": "^20.2.5",
     "typescript": "^5.0.2",
