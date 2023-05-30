@@ -1,0 +1,32 @@
+{
+  "name": "wasm-runner",
+  "version": "0.0.1",
+  "description": "Run your code inside the browser using the magic of Web Assembly.",
+  "main": "dist/main.js",
+  "types": "dist/main.d.ts",
+  "type": "module",
+  "scripts": {
+    "dev": "vite build --watch",
+    "build": "vite build && npx tsc",
+    "serve": "serve ./example"
+  },
+  "keywords": [
+    "code",
+    "runner",
+    "compiler",
+    "cpp",
+    "python",
+    "wasm"
+  ],
+  "author": "Asandei Stefan-Alexandru",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^20.2.5",
+    "typescript": "^5.0.2",
+    "vite": "^4.3.9",
+    "vite-plugin-dts": "^2.3.0"
+  },
+  "dependencies": {
+    "serve": "^14.2.0"
+  }
+}
