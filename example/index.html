@@ -19,9 +19,6 @@ random.randint(100, 1000)
       <pre id="output">loading...</pre>
     </div>
     <script defer type="module">
-      import { CodeRunner } from "/wasm-runner.js";
-
-      const runner = new CodeRunner();
       const worker = new Worker("worker.js", { type: "module" });
 
       worker.postMessage("load");
