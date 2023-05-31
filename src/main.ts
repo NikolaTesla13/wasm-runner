@@ -1,9 +1,15 @@
+import { CppBackend } from "./cpp";
+import { JavaScriptBackend } from "./javascript";
 import { PythonBackend } from "./python";
 
 export class CodeRunner {
-  private backends = [new PythonBackend()];
+  private backends = [
+    new PythonBackend(),
+    new CppBackend(),
+    new JavaScriptBackend(),
+  ];
 
-  public load = async (language: "python3") => {
+  public load = async (language: "python3" | "cpp" | "javascript") => {
     for (let i = 0; i < this.backends.length; i++) {
       if (this.backends[i].name != language) continue;
       await this.backends[i].loadBinaries();
@@ -12,7 +18,7 @@ export class CodeRunner {
 
   public run = async (
     source: string,
-    language: "python3"
+    language: "python3" | "cpp" | "javascript"
   ): Promise<string | undefined> => {
     for (let i = 0; i < this.backends.length; i++) {
       if (this.backends[i].name != language) continue;
